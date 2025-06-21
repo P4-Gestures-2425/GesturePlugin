@@ -1,0 +1,42 @@
+{
+  "manifest_version": 3,
+  "name": "Gestures Plugin",
+  "version": "1.0",
+  "description": "Deteta gestos com a mão e faz scroll.",
+  "permissions": ["storage", "scripting"],
+  "host_permissions": [
+    "<all_urls>",
+    "https://tfhub.dev/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "libs/*",
+        "pages/*"
+      ],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": [
+        "libs/tf-core.min.js",
+        "libs/tf-converter.min.js",
+        "libs/tf-backend-webgl.min.js",
+        "libs/hand-pose-detection.js",
+        "libs/fingerpose.js",
+        "content.js"
+      ]
+    }
+  ],
+  "icons": {
+    "128": "icon.png"
+  }
+}
