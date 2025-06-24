@@ -140,12 +140,17 @@ async function startHandDetection() {
           if (dist < 15 && !pinchActive && cursor && cursor.style.display !== 'none') {
             pinchActive = true;
             simulateClick(lastCursorPos.x, lastCursorPos.y);
-            cursor.style.background = 'rgba(255, 0, 0, 0.7)';
+
+            if (cursor) {
+              cursor.style.background = 'rgba(255, 0, 0, 0.7)';
+            }
           }
           if (dist >= 15) {
             pinchActive = false;
             //* Volta à cor normal
-            cursor.style.background = 'rgba(0, 123, 255, 0.7)';
+            if (cursor) {
+              cursor.style.background = 'rgba(0, 123, 255, 0.7)';
+            }
           }
         }
       }
