@@ -9,7 +9,7 @@ let lastUrl = location.href;
 let detectionEnabled = false;
 let detectionLoopActive = false;
 
-// Ao carregar o content script, lê o estado persistente e inicia deteção se necessário
+//* Ao carregar o content script, lê o estado persistente e inicia deteção se necessário
 try {
   chrome.storage.local.get('detectionEnabled', (data) => {
     if (data && data.detectionEnabled) {
@@ -60,6 +60,7 @@ async function startHandDetection() {
     video.style.position = 'fixed';
     video.style.top = '10px';
     video.style.left = '10px';
+    video.style.transform = 'scaleX(-1)';
     video.style.zIndex = 99999;
     video.width = 320;
     video.height = 240;
@@ -100,6 +101,7 @@ async function startHandDetection() {
           gesture = est.gestures.reduce((p, c) => (p.score > c.score ? p : c));
           if (gesture.name === 'thumbs_up') {
             window.scrollBy({ top: 15, behavior: 'instant' });
+            console.log('[CONTENT] Hand:', hands[0].handedness);
             showGestureFeedback('👍');
           }
           if (gesture.name === 'victory') {
