@@ -18,7 +18,11 @@
     {
       "resources": [
         "libs/*",
-        "pages/*"
+        "pages/*",
+        "styles/*",
+        "images/*",
+        "gestures/*",
+        "scripts/*"
       ],
       "matches": ["<all_urls>"]
     }
@@ -32,6 +36,7 @@
         "libs/tf-backend-webgl.min.js",
         "libs/hand-pose-detection.js",
         "libs/fingerpose.js",
+        "gestures/openHand.js",
         "content.js"
       ]
     }
