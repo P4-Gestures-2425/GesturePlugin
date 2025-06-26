@@ -37,6 +37,7 @@
         "libs/hand-pose-detection.js",
         "libs/fingerpose.js",
         "gestures/openHand.js",
+        "gestures/thumbDown.js",
         "content.js"
       ]
     }

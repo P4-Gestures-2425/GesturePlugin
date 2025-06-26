@@ -42,8 +42,8 @@ async function startHandDetection() {
     const GE = window.fp.GestureEstimator;
     gestureEstimator = new GE([
       window.fp.Gestures.ThumbsUpGesture,
-      window.fp.Gestures.VictoryGesture,
-      window.openHandGesture
+      window.openHandGesture,
+      window.thumbDownGesture
     ]);
     console.log('[CONTENT] GestureEstimator carregado:', !!gestureEstimator);
   }
@@ -96,17 +96,17 @@ async function startHandDetection() {
       if (hands.length > 0) {
         const keypoints = hands[0].keypoints3D;
         const est = gestureEstimator.estimate(keypoints, 9);
+        console.log('[CONTENT] Estimativa de gestos:', est);
         let gesture = null;
         if (est.gestures && est.gestures.length > 0) {
           gesture = est.gestures.reduce((p, c) => (p.score > c.score ? p : c));
           if (gesture.name === 'thumbs_up') {
-            window.scrollBy({ top: 15, behavior: 'instant' });
-            console.log('[CONTENT] Hand:', hands[0].handedness);
+            window.scrollBy({ top: -15, behavior: 'instant' });
             showGestureFeedback('👍');
           }
-          if (gesture.name === 'victory') {
-            window.scrollBy({ top: -15, behavior: 'instant' });
-            showGestureFeedback('✌️');
+          if (gesture.name === 'thumbs_down') {
+            window.scrollBy({ top: 15, behavior: 'instant' });
+            showGestureFeedback('👎');
           }
           if (gesture.name === 'open_hand') {
             if (!document.getElementById('virtual-cursor')) {
