@@ -48,6 +48,7 @@ O **GesturePlugin** é uma extensão para browsers que permite controlar página
 ## 🏗️ Arquitetura
 
 ```mermaid
+graph TD;
     A["Content Script"] -- Comunicação --> B["Background Script"]
     B -- Comunicação --> C["Offscreen Script"]
     A -- Usa --> D["TensorFlow.js"]
