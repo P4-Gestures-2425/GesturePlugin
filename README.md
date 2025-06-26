@@ -1,87 +1,145 @@
-# GesturePlugin
+# ✋ GesturePlugin - Extensão Inteligente de Reconhecimento de Gestos
 
-![GitHub repo size](https://img.shields.io/github/repo-size/DiogoGaspar6/GesturePlugin?style=flat-square)
-![GitHub issues](https://img.shields.io/github/issues/DiogoGaspar6/GesturePlugin?style=flat-square)
-![GitHub stars](https://img.shields.io/github/stars/DiogoGaspar6/GesturePlugin?style=flat-square)
-![GitHub license](https://img.shields.io/github/license/DiogoGaspar6/GesturePlugin?style=flat-square)
-![Chrome Web Store](https://img.shields.io/chrome-web-store/v/your-extension-id?style=flat-square)
+[![Chrome Web Store](https://img.shields.io/badge/chrome%20web%20store-extension-blue)](https://chrome.google.com/webstore/)  
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Code Style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](https://standardjs.com/)
 
-## ✨ Descrição
+> Uma extensão de browser que utiliza IA para reconhecer gestos com a mão em tempo real e interagir com páginas web de forma inovadora.
 
-O **GesturePlugin** é uma extensão para browsers baseada em reconhecimento de gestos com as mãos, utilizando inteligência artificial e visão computacional. Permite controlar funcionalidades do browser ou de páginas web através de gestos, tornando a navegação mais acessível, intuitiva e inovadora.
+## 📋 Índice
 
-## 🚀 Funcionalidades
+- [✋ GesturePlugin - Extensão Inteligente de Reconhecimento de Gestos](#-gestureplugin---extensão-inteligente-de-reconhecimento-de-gestos)
+  - [📋 Índice](#-índice)
+  - [🎯 Sobre o Projeto](#-sobre-o-projeto)
+    - [Características Principais](#características-principais)
+  - [✨ Funcionalidades](#-funcionalidades)
+  - [🏗️ Arquitetura](#️-arquitetura)
+  - [🚀 Tecnologias Utilizadas](#-tecnologias-utilizadas)
+  - [📦 Instalação](#-instalação)
+    - [Pré-requisitos](#pré-requisitos)
+    - [Passos](#passos)
+  - [⚙️ Configuração](#️-configuração)
+  - [🎮 Como Usar](#-como-usar)
+    - [Exemplos de Gestos](#exemplos-de-gestos)
+  - [📊 Estrutura do Projeto](#-estrutura-do-projeto)
+  - [🤝 Contribuição](#-contribuição)
+    - [Guidelines](#guidelines)
+  - [📄 Licença](#-licença)
 
-- Reconhecimento de gestos em tempo real usando webcam
-- Suporte a múltiplos gestos (ex: mão aberta, outros a adicionar)
-- Integração com páginas web para executar ações personalizadas
-- Interface popup para ativação/desativação e configuração
-- Suporte a múltiplos backends de TensorFlow.js (WebGL, WASM)
-- Modularidade para adicionar novos gestos facilmente
-- Design responsivo e intuitivo
+## 🎯 Sobre o Projeto
 
-## 🖼️ Demonstração
+O **GesturePlugin** é uma extensão para browsers que permite controlar páginas web através de gestos com as mãos, utilizando modelos de IA para detecção e classificação de gestos em tempo real. Ideal para acessibilidade, produtividade e experiências inovadoras de navegação.
 
-![Demonstração](images/logotipo.png)
+### Características Principais
 
-## 🛠️ Tecnologias Utilizadas
+- ✋ **Reconhecimento de Gestos**: Deteta gestos como "thumbs up", "thumbs down", "open hand", entre outros.
+- 🤖 **IA no Browser**: Utiliza TensorFlow.js e Fingerpose para reconhecimento local, sem enviar imagens para servidores externos.
+- ⚡ **Interação Rápida**: Responde instantaneamente aos gestos, permitindo ações como scroll, navegação, likes, etc.
+- 🧩 **Fácil de Integrar**: Pode ser adaptado para diferentes páginas e fluxos de trabalho.
 
-- JavaScript (ES6+)
-- TensorFlow.js
-- MediaPipe Hands
-- Fingerpose.js
-- HTML5 & CSS3
-- WebExtensions API
+## ✨ Funcionalidades
 
-## 📁 Estrutura de Pastas
+- **Reconhecimento de múltiplos gestos** (ex: polegar para cima/baixo, mão aberta, etc.)
+- **Execução de ações automáticas** (scroll, navegação, cliques, etc.)
+- **Popup de configuração** para ativar/desativar gestos
+- **Feedback visual** sobre o gesto detetado
+- **Modo offscreen** para processamento eficiente
 
-```plaintext
-GesturePlugin/
-│
-├── background.js           # Script de background da extensão
-├── content.js              # Script injetado nas páginas
-├── gestures/               # Scripts de definição de gestos
-│   └── openHand.js
-├── libs/                   # Bibliotecas externas (TensorFlow, MediaPipe, etc)
-├── scripts/                # Scripts utilitários e de deteção
-├── images/                 # Imagens e ícones
-├── styles/                 # Ficheiros CSS
-├── pages/                  # Páginas HTML internas
-├── popup.html              # Interface popup da extensão
-├── popup.js
-├── manifest.json           # Manifesto da extensão
-├── offscreen.html/.js      # Suporte a processamento offscreen
-└── icon.png                # Ícone principal
+## 🏗️ Arquitetura
+
+```mermaid
+    A["Content Script"] -- Comunicação --> B["Background Script"]
+    B -- Comunicação --> C["Offscreen Script"]
+    A -- Usa --> D["TensorFlow.js"]
+    A -- Usa --> E["Fingerpose"]
+    F["Popup/UI"] -- Interage --> B
 ```
 
-## ⚙️ Instalação
+## 🚀 Tecnologias Utilizadas
 
-1. **Clona o repositório:**
-   ```bash
-   git clone https://github.com/DiogoGaspar6/GesturePlugin.git
-   ```
-2. **Abre o Chrome/Edge/Brave e vai a `chrome://extensions/`**
-3. Ativa o modo de programador (Developer mode)
-4. Clica em "Carregar sem compactação" (Load unpacked)
-5. Seleciona a pasta `GesturePlugin`
+- **JavaScript (ES6+)**
+- **TensorFlow.js** - Detecção de mãos
+- **Fingerpose** - Classificação de gestos
+- **Chrome Extensions API**
+- **HTML5 & CSS3**
 
-## 🧑‍💻 Como Usar
+## 📦 Instalação
 
-1. Garante que tens uma webcam ligada.
-2. Clica no ícone da extensão no browser.
-3. Ativa a deteção de gestos no popup.
-4. Usa os gestos suportados para interagir com a página.
+### Pré-requisitos
+- Google Chrome ou browser compatível
 
-## ✍️ Adicionar Novos Gestos
+### Passos
+1. **Clona o repositório**
+```bash
+git clone https://github.com/teu-username/GesturePlugin.git
+cd GesturePlugin
+```
+2. **Abre o Chrome e acede a** `chrome://extensions/`
+3. **Ativa o modo de programador**
+4. **Clica em "Carregar sem compactação"** e seleciona a pasta do projeto
 
-- Cria um novo ficheiro em `gestures/` seguindo o exemplo de `openHand.js`.
-- Adiciona a lógica de reconhecimento e integra no sistema principal.
+## ⚙️ Configuração
 
-## 👨‍💻 Autores
+- Podes ativar/desativar gestos no popup da extensão
+- Para adicionar novos gestos, edita os ficheiros em `gestures/`
 
-- Diogo Gaspar ([DiogoGaspar6](https://github.com/DiogoGaspar6))
-- Gustavo (adicionar GitHub se aplicável)
+## 🎮 Como Usar
+
+1. Garante que tens webcam ligada
+2. Clica no ícone da extensão para abrir o popup
+3. Ativa/desativa os gestos que pretendes
+4. Usa os gestos em páginas web compatíveis
+
+### Exemplos de Gestos
+
+| Gesto           | Ação Sugerida         |
+|-----------------|----------------------|
+| 👍 Thumbs Up     | Like, scroll up      |
+| 👎 Thumbs Down   | Dislike, scroll down |
+| 🖐️ Mão Aberta    | Parar, pausar        |
+
+## 📊 Estrutura do Projeto
+
+```
+GesturePlugin/
+├── background.js
+├── content.js
+├── gestures/
+│   ├── openHand.js
+│   └── thumbDown.js
+├── libs/
+│   ├── fingerpose.js
+│   └── ...
+├── scripts/
+│   ├── detector.js
+│   └── utils.js
+├── popup.html
+├── popup.js
+├── manifest.json
+├── styles/
+│   └── index.css
+└── ...
+```
+
+## 🤝 Contribuição
+
+Contribuições são bem-vindas! Para contribuir:
+
+1. Faz fork do projeto
+2. Cria uma branch (`git checkout -b feature/NovaFuncionalidade`)
+3. Commit das tuas alterações (`git commit -m 'Adiciona nova funcionalidade'`)
+4. Push para a branch (`git push origin feature/NovaFuncionalidade`)
+5. Abre um Pull Request
+
+### Guidelines
+- Mantém o código limpo e documentado
+- Segue as convenções do projeto
+- Testa antes de submeter
 
 ## 📄 Licença
 
-Este projeto está licenciado sob a licença MIT. Consulta o ficheiro LICENSE para mais detalhes. 
+Este projeto está licenciado sob a Licença MIT - vê o ficheiro [LICENSE](LICENSE) para detalhes.
+
+---
+
+**Desenvolvido com ❤️** 
