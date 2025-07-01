@@ -136,24 +136,26 @@ async function startHandDetection() {
 
         const thumbTip = hands[0].keypoints.find(k => k.name === 'thumb_tip');
         const indexTip = hands[0].keypoints.find(k => k.name === 'index_finger_tip');
-        if (thumbTip && indexTip) {
-          const dist = distance2D(thumbTip, indexTip);
-          const cursor = document.getElementById('virtual-cursor');
-          if (dist < 15 && !pinchActive && cursor && cursor.style.display !== 'none') {
-            pinchActive = true;
-            simulateClick(lastCursorPos.x, lastCursorPos.y);
-
-            if (cursor) {
-              cursor.style.background = 'rgba(255, 0, 0, 0.7)';
-            }
+        const middleTip = hands[0].keypoints.find(k => k.name === 'middle_finger_tip');
+        const cursor = document.getElementById('virtual-cursor');
+        if (isPinch(thumbTip, indexTip) && !pinchActive && cursor && cursor.style.display !== 'none') {
+          pinchActive = true;
+          simulateClick(lastCursorPos.x, lastCursorPos.y);
+          if (cursor) cursor.style.background = 'rgba(255, 0, 0, 0.7)';
+        }
+        if (!isPinch(thumbTip, indexTip)) {
+          pinchActive = false;
+          if (cursor) cursor.style.background = 'rgba(0, 123, 255, 0.7)';
+        }
+        if (isMiddleTouchingThumb(thumbTip, middleTip) && cursor && cursor.style.display !== 'none') {
+          if (!cursor.rightClickActive) {
+            cursor.rightClickActive = true;
+            simulateRightClick(lastCursorPos.x, lastCursorPos.y);
+            cursor.style.background = 'rgba(255, 165, 0, 0.7)';
           }
-          if (dist >= 15) {
-            pinchActive = false;
-            //* Volta à cor normal
-            if (cursor) {
-              cursor.style.background = 'rgba(0, 123, 255, 0.7)';
-            }
-          }
+        } else {
+          if (cursor) cursor.rightClickActive = false;
+          if (cursor && !pinchActive) cursor.style.background = 'rgba(0, 123, 255, 0.7)';
         }
       }
     } catch (e) {
@@ -262,13 +264,31 @@ function distance2D(a, b) {
   return Math.sqrt((a.x - b.x) ** 2 + (a.y - b.y) ** 2);
 }
 
-// * Simula um clique na posição do cursor virtual
+//* --- Funções de Deteção de Gestos ---
+function isPinch(thumbTip, indexTip) {
+  if (!thumbTip || !indexTip) return false;
+  return distance2D(thumbTip, indexTip) < 15;
+}
+
+function isMiddleTouchingThumb(thumbTip, middleTip) {
+  if (!thumbTip || !middleTip) return false;
+  return distance2D(thumbTip, middleTip) < 15;
+}
+
+//* --- Funções de Simulação de Cliques ---
 function simulateClick(x, y) {
   const el = document.elementFromPoint(x, y);
   if (el) {
     el.dispatchEvent(new MouseEvent('mousedown', { bubbles: true, clientX: x, clientY: y }));
     el.dispatchEvent(new MouseEvent('mouseup', { bubbles: true, clientX: x, clientY: y }));
     el.dispatchEvent(new MouseEvent('click', { bubbles: true, clientX: x, clientY: y }));
+  }
+}
+
+function simulateRightClick(x, y) {
+  const el = document.elementFromPoint(x, y);
+  if (el) {
+    el.dispatchEvent(new MouseEvent('contextmenu', { bubbles: true, clientX: x, clientY: y, button: 2 }));
   }
 }
 

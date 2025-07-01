@@ -1,21 +1,14 @@
-// scripts/utils.js
-// Função utilitária para injetar scripts sequencialmente
-function injectScript(url) {
-  return new Promise((resolve, reject) => {
-    if (document.querySelector(`script[src="${chrome.runtime.getURL(url)}"]`)) {
-      resolve();
-      return;
-    }
-    const script = document.createElement('script');
-    script.src = chrome.runtime.getURL(url);
-    script.onload = () => resolve();
-    script.onerror = () => reject(new Error(`Erro ao carregar ${url}`));
-    document.head.appendChild(script);
-  });
+//* Funções utilitárias para gestos de mão
+export function distance2D(a, b) {
+  return Math.sqrt((a.x - b.x) ** 2 + (a.y - b.y) ** 2);
 }
 
-function injectAllGestureScripts() {
-  return injectScript('libs/fingerpose.js')
-    .then(() => injectScript('gestures/openHand.js'))
-    .then(() => injectScript('scripts/detector.js'));
+export function isPinch(thumbTip, indexTip) {
+  if (!thumbTip || !indexTip) return false;
+  return distance2D(thumbTip, indexTip) < 15;
+}
+
+export function isMiddleTouchingThumb(thumbTip, middleTip) {
+  if (!thumbTip || !middleTip) return false;
+  return distance2D(thumbTip, middleTip) < 15;
 } 
