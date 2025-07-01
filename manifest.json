@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Gestures Plugin",
   "version": "1.0",
-  "description": "Deteta gestos com a mão e faz scroll.",
+  "description": "Plugin de gestos para teres uma experiência mais fácil e eficiente.",
   "permissions": ["storage", "scripting"],
   "host_permissions": [
     "<all_urls>",
@@ -43,6 +43,6 @@
     }
   ],
   "icons": {
-    "128": "icon.png"
+    "128": "images/logotipo-rounded.png"
   }
 }

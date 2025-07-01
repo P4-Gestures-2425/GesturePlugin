@@ -3,24 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <title>Gestures Plugin</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        margin: 20px;
-      }
-      button {
-        margin: 5px 0;
-        width: 100%;
-        padding: 10px;
-        font-size: 1rem;
-      }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/popup.css">
   </head>
   <body>
-    <button id="start">Iniciar deteção de gestos</button>
-    <button id="stop">Parar deteção</button>
-    <button id="about-btn">Sobre</button>
-    <div id="status"></div>
+    <div class="popup-container">
+      <img src="images/logotipo-rounded.png" alt="Logo" class="logo" />
+      <h1>Gestures Plugin</h1>
+      <button id="start">Iniciar deteção de gestos</button>
+      <button id="stop">Parar deteção</button>
+      <button id="about-btn">Sobre</button>
+      <div id="status"></div>
+    </div>
     <script src="popup.js"></script>
     <script src="https://unpkg.com/@tensorflow/tfjs-core@3.7.0/dist/tf-core.js"></script>
     <script
