@@ -50,6 +50,11 @@
             >
           </li>
           <li class="nav-item">
+            <a href="#gestures-info-section" class="nav-link custom-hover"
+              >Gestos Disponíveis</a
+            >
+          </li>
+          <li class="nav-item">
             <a href="#developers-info-section" class="nav-link custom-hover"
               >Sobre os desenvolvedores</a
             >
@@ -82,10 +87,22 @@
           aplicações, navegar por menus e executar ações com simples movimentos
           das mãos. Desenvolvido com tecnologia avançada, o Gesture Plugin
           transforma a forma como os utilizadores interagem com a tecnologia,
-          proporcionando uma nova dimensão de conveniência e inovação. Foi desenvolvida para a cadeira Projeto4 da universidade <a href="https://www.ipvc.pt/estg/" target="_blank">IPVC-ESTG</a> da licenciatura de Engenharia Informática, com o orientador <a href="https://github.com/pedromoreira-estg" target="_blank">Professor Pedro Moreira</a> e os alunos Diogo Gaspar e Gustavo Barbosa.
+          proporcionando uma nova dimensão de conveniência e inovação. Foi
+          desenvolvida para a cadeira Projeto4 da universidade
+          <a href="https://www.ipvc.pt/estg/" target="_blank">IPVC-ESTG</a> da
+          licenciatura de Engenharia Informática, com o orientador
+          <a href="https://github.com/pedromoreira-estg" target="_blank"
+            >Professor Pedro Moreira</a
+          >
+          e os alunos Diogo Gaspar e Gustavo Barbosa.
         </p>
-        <a href="https://github.com/P4-Gestures-2425/GesturePlugin" target="_blank" class="badge bg-dark text-white d-inline-flex align-items-center gap-2 mb-2" style="font-size: 1rem; padding: 0.7em 1.2em; text-decoration: none;">
-          <i class="fab fa-github" style="font-size: 1.3rem;"></i>
+        <a
+          href="https://github.com/P4-Gestures-2425/GesturePlugin"
+          target="_blank"
+          class="badge bg-dark text-white d-inline-flex align-items-center gap-2 mb-2"
+          style="font-size: 1rem; padding: 0.7em 1.2em; text-decoration: none"
+        >
+          <i class="fab fa-github" style="font-size: 1.3rem"></i>
           Repositório do Plugin
         </a>
         <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
@@ -178,17 +195,72 @@
     </div>
     <!--* END OF TECNOLOGIAS UTILIZADAS  -->
 
+    <!--* GESTOS DISPONÍVEIS -->
+    <div class="container px-4 py-5" id="gestures-info-section">
+      <h2 class="pb-2 border-bottom">Gestos Disponíveis</h2>
+      <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+        <div class="col d-flex align-items-start">
+          <div
+            class="icon-square d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3"
+            style="font-size: 2.5em"
+          >
+            <span role="img" aria-label="Thumbs Up">👍</span>
+          </div>
+          <div>
+            <h3 class="fs-4 text-body-emphasis mb-1">Thumbs Up</h3>
+            <p class="mb-2">
+              Desliza a página para cima ao mostrar o gesto de "polegar para
+              cima".
+            </p>
+          </div>
+        </div>
+        <div class="col d-flex align-items-start">
+          <div
+            class="icon-square d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3"
+            style="font-size: 2.5em"
+          >
+            <span role="img" aria-label="Thumbs Down">👎</span>
+          </div>
+          <div>
+            <h3 class="fs-4 text-body-emphasis mb-1">Thumbs Down</h3>
+            <p class="mb-2">
+              Desliza a página para baixo ao mostrar o gesto de "polegar para
+              baixo".
+            </p>
+          </div>
+        </div>
+        <div class="col d-flex align-items-start">
+          <div
+            class="icon-square d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3"
+            style="font-size: 2.5em"
+          >
+            <span role="img" aria-label="Mão Aberta">🖐️</span>
+          </div>
+          <div>
+            <h3 class="fs-4 text-body-emphasis mb-1">Mão Aberta</h3>
+            <p class="mb-2">
+              Controla o cursor virtual com a mão aberta. Permite clicar (pinça)
+              e clicar direito (médio e polegar juntos).
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--* END OF GESTOS DISPONÍVEIS -->
+
     <!--* DEVELOPERS INFO -->
     <div class="px-4 py-5 my-5 text-center" id="developers-info-section">
-      <h1 class="display-5 fw-bold text-body-emphasis">Sobre os Desenvolvedores</h1>
+      <h1 class="display-5 fw-bold text-body-emphasis">
+        Sobre os Desenvolvedores
+      </h1>
       <div class="col-lg-6 mx-auto">
         <p class="lead mb-4" style="text-align: justify">
           O Gesture Plugin foi desenvolvido por uma equipa dedicada de
           programadores apaixonados por tecnologia e inovação. Com o objetivo de
-          criar uma experiência de utilizador única, a equipa trabalhou arduamente
-          para integrar gestos intuitivos no plugin, tornando-o acessível e fácil
-          de usar. Acreditamos que a tecnologia deve ser simples e eficaz, e o
-          Gesture Plugin é um reflexo desse princípio.
+          criar uma experiência de utilizador única, a equipa trabalhou
+          arduamente para integrar gestos intuitivos no plugin, tornando-o
+          acessível e fácil de usar. Acreditamos que a tecnologia deve ser
+          simples e eficaz, e o Gesture Plugin é um reflexo desse princípio.
         </p>
       </div>
       <div class="row row-cols-1 row-cols-lg-2 g-4 py-5">
@@ -198,26 +270,53 @@
               src="../images/diogo.png"
               class="card-img-top"
               alt="Desenvolvedor 1"
-              style="height: 300px; object-fit: contain; background-position: center top;"
+              style="
+                height: 300px;
+                object-fit: contain;
+                background-position: center top;
+              "
             />
             <div class="card-body">
               <h5 class="card-title">Diogo Gaspar</h5>
               <p class="card-text" style="text-align: justify">
-                Olá, sou o Diogo Gaspar, um dos desenvolvedores do Gesture Plugin.
-                Tenho uma paixão por criar soluções tecnológicas que melhorem a
-                experiência do utilizador. Com uma sólida formação em
+                Olá, sou o Diogo Gaspar, um dos desenvolvedores do Gesture
+                Plugin. Tenho uma paixão por criar soluções tecnológicas que
+                melhorem a experiência do utilizador. Com uma sólida formação em
                 programação, trabalhei no desenvolvimento do Gesture Plugin para
                 tornar a interação com o sistema mais intuitiva e eficiente.
               </p>
-              <div class="d-flex gap-3 align-items-center justify-content-center">
-                <a href="https://www.instagram.com/diogoogaspar/" target="_blank" title="Instagram">
-                  <i class="fab fa-instagram" style="color: #e4405f; font-size: 2rem;"></i>
+              <div
+                class="d-flex gap-3 align-items-center justify-content-center"
+              >
+                <a
+                  href="https://www.instagram.com/diogoogaspar/"
+                  target="_blank"
+                  title="Instagram"
+                >
+                  <i
+                    class="fab fa-instagram"
+                    style="color: #e4405f; font-size: 2rem"
+                  ></i>
                 </a>
-                <a href="https://www.linkedin.com/in/diogoogaspar/" target="_blank" title="LinkedIn">
-                  <i class="fab fa-linkedin" style="color: #0a66c2; font-size: 2rem;"></i>
+                <a
+                  href="https://www.linkedin.com/in/diogoogaspar/"
+                  target="_blank"
+                  title="LinkedIn"
+                >
+                  <i
+                    class="fab fa-linkedin"
+                    style="color: #0a66c2; font-size: 2rem"
+                  ></i>
                 </a>
-                <a href="https://github.com/DiogoGaspar6" target="_blank" title="GitHub">
-                  <i class="fab fa-github" style="color: #333; font-size: 2rem;"></i>
+                <a
+                  href="https://github.com/DiogoGaspar6"
+                  target="_blank"
+                  title="GitHub"
+                >
+                  <i
+                    class="fab fa-github"
+                    style="color: #333; font-size: 2rem"
+                  ></i>
                 </a>
               </div>
             </div>
@@ -229,23 +328,55 @@
               src="../images/gustavo.jpg"
               class="card-img-top"
               alt="Desenvolvedor 2"
-              style="height: 300px; object-fit: contain; background-position: center top;"
+              style="
+                height: 300px;
+                object-fit: contain;
+                background-position: center top;
+              "
             />
             <div class="card-body">
               <h5 class="card-title">Gustavo Barbosa</h5>
               <p class="card-text" style="text-align: justify">
-                Olá, sou o Gustavo Barbosa, um dos desenvolvedores do Gesture Plugin.
-Acredito que a melhor tecnologia nasce da colaboração e da escuta ativa dos utilizadores. Tenho vindo a aprofundar os meus conhecimentos em programação enquanto trabalho no Gesture Plugin, com o objetivo de criar ferramentas que não só respondam às necessidades dos utilizadores, mas que também tenham um impacto positivo na sua rotina digital.
+                Olá, sou o Gustavo Barbosa, um dos desenvolvedores do Gesture
+                Plugin. Acredito que a melhor tecnologia nasce da colaboração e
+                da escuta ativa dos utilizadores. Tenho vindo a aprofundar os
+                meus conhecimentos em programação enquanto trabalho no Gesture
+                Plugin, com o objetivo de criar ferramentas que não só respondam
+                às necessidades dos utilizadores, mas que também tenham um
+                impacto positivo na sua rotina digital.
               </p>
-              <div class="d-flex gap-3 align-items-center justify-content-center">
-                <a href="https://www.instagram.com/gustavo_barbosa_28/" target="_blank" title="Instagram">
-                  <i class="fab fa-instagram" style="color: #e4405f; font-size: 2rem;"></i>
+              <div
+                class="d-flex gap-3 align-items-center justify-content-center"
+              >
+                <a
+                  href="https://www.instagram.com/gustavo_barbosa_28/"
+                  target="_blank"
+                  title="Instagram"
+                >
+                  <i
+                    class="fab fa-instagram"
+                    style="color: #e4405f; font-size: 2rem"
+                  ></i>
                 </a>
-                <a href="https://www.linkedin.com/in/gustavo-barbosa-42695b365/" target="_blank" title="LinkedIn">
-                  <i class="fab fa-linkedin" style="color: #0a66c2; font-size: 2rem;"></i>
+                <a
+                  href="https://www.linkedin.com/in/gustavo-barbosa-42695b365/"
+                  target="_blank"
+                  title="LinkedIn"
+                >
+                  <i
+                    class="fab fa-linkedin"
+                    style="color: #0a66c2; font-size: 2rem"
+                  ></i>
                 </a>
-                <a href="https://github.com/GustavoBarbosa2" target="_blank" title="GitHub">
-                  <i class="fab fa-github" style="color: #333; font-size: 2rem;"></i>
+                <a
+                  href="https://github.com/GustavoBarbosa2"
+                  target="_blank"
+                  title="GitHub"
+                >
+                  <i
+                    class="fab fa-github"
+                    style="color: #333; font-size: 2rem"
+                  ></i>
                 </a>
               </div>
             </div>
@@ -256,7 +387,10 @@ Acredito que a melhor tecnologia nasce da colaboração e da escuta ativa dos ut
     <!--* END OF DEVELOPERS INFO -->
 
     <!--* CONTACT FORM -->
-    <div class="container col-xl-10 col-xxl-8 px-4 py-5" id="contact-form-section">
+    <div
+      class="container col-xl-10 col-xxl-8 px-4 py-5"
+      id="contact-form-section"
+    >
       <div class="row align-items-center g-lg-5 py-5">
         <div class="col-lg-7 text-center text-lg-start">
           <h1 class="display-4 fw-bold lh-1 text-body-emphasis mb-3">
@@ -266,12 +400,12 @@ Acredito que a melhor tecnologia nasce da colaboração e da escuta ativa dos ut
             Caso encontres algum erro ou tenhas alguma dúvida sobre o plugin,
             por favor, não hesites em contactar-nos. Estamos aqui para ajudar e
             garantir que tenhas a melhor experiência possível com o Gesture
-            Plugin. Preenche o formulário e entraremos em contacto
-            contigo o mais breve possível.
+            Plugin. Preenche o formulário e entraremos em contacto contigo o
+            mais breve possível.
           </p>
         </div>
         <div class="col-md-10 mx-auto col-lg-5">
-          <form class="p-4 p-md-5 border rounded-3 bg-body-tertiary">
+          <form action="https://formspree.io/f/xnnvegnv" method="POST" class="p-4 p-md-5 border rounded-3 bg-body-tertiary">
             <div class="form-floating mb-3">
               <input
                 type="email"
@@ -344,6 +478,68 @@ Acredito que a melhor tecnologia nasce da colaboração e da escuta ativa dos ut
       integrity="sha384-7qAoOXltbVP82dhxHAUje59V5r2YsVfBafyUDxEdApLPmcdhBPg1DKg1ERo0BZlK"
       crossorigin="anonymous"
     ></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const form = document.querySelector("#contact-form-section form");
+        const email = document.getElementById("floatingInput");
+        const name = document.getElementById("floatingName");
+        const message = document.getElementById("floatingTextarea");
+
+        // Cria elemento de feedback
+        let feedback = document.createElement("div");
+        feedback.id = "form-feedback";
+        feedback.style.display = "none";
+        feedback.className = "alert mt-3";
+        form.appendChild(feedback);
+
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          // Validação simples
+          if (!email.value || !message.value) {
+            feedback.textContent = "Por favor, preencha todos os campos.";
+            feedback.className = "alert alert-danger mt-3";
+            feedback.style.display = "block";
+            return;
+          }
+
+          // Validação de email simples
+          if (!email.value.match(/^[^@\s]+@[^@\s]+\.[^@\s]+$/)) {
+            feedback.textContent = "Por favor, insira um email válido.";
+            feedback.className = "alert alert-danger mt-3";
+            feedback.style.display = "block";
+            return;
+          }
+
+          // Apenas email e message
+          const data = {
+            email: email.value,
+            message: message.value
+          };
+
+          fetch(form.action, {
+            method: "POST",
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+          }).then(response => {
+            if (response.ok) {
+              feedback.textContent = "Mensagem enviada com sucesso! Obrigado pelo contacto.";
+              feedback.className = "alert alert-success mt-3";
+              feedback.style.display = "block";
+              form.reset();
+              setTimeout(() => { feedback.style.display = "none"; }, 4000);
+            } else {
+              feedback.textContent = "Ocorreu um erro ao enviar. Tenta novamente mais tarde.";
+              feedback.className = "alert alert-danger mt-3";
+              feedback.style.display = "block";
+            }
+          });
+        });
+      });
+    </script>
     <!--* END OF SCRIPTS  -->
   </body>
 </html>

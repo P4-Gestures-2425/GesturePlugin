@@ -94,6 +94,24 @@ async function startHandDetection() {
       hands = await detector.estimateHands(video);
       console.log('[CONTENT] Mãos detectadas:', hands.length);
       if (hands.length > 0) {
+        const keypoints = hands[0].keypoints;
+        const wrist = keypoints.find(k => k.name === 'wrist');
+        const middleTip = keypoints.find(k => k.name === 'middle_finger_tip');
+        if (wrist && middleTip) {
+          const dist = Math.sqrt((wrist.x - middleTip.x) ** 2 + (wrist.y - middleTip.y) ** 2);
+          console.log('[CONTENT] Distância entre mão e dedo médio:', dist);
+          if (dist < 70) {
+            showVideoOverlay(false); // Esconde overlay (posição ideal)
+          } else {
+            showVideoOverlay(true, 'Afasta-se da câmara!'); // Mostra overlay
+          }
+        } else {
+          showVideoOverlay(true, 'Mão não detetada corretamente!');
+        }
+      } else {
+        showVideoOverlay(true, 'Mão não detetada!');
+      }
+      if (hands.length > 0) {
         const keypoints = hands[0].keypoints3D;
         const est = gestureEstimator.estimate(keypoints, 9);
         console.log('[CONTENT] Estimativa de gestos:', est);
@@ -195,6 +213,12 @@ function stopHandDetection() {
   if (cursor) {
     cursor.remove();
   }
+  
+  //* Remove o overlay de posição se existir
+  const overlay = document.getElementById('video-position-overlay');
+  if (overlay) {
+    overlay.remove();
+  }
 }
 
 function showGestureFeedback(emoji) {
@@ -248,9 +272,19 @@ function moveVirtualCursor(x, y) {
   const screenWidth = window.innerWidth;
   const screenHeight = window.innerHeight;
 
-  //* Mapeia as coordenadas do vídeo para a janela
-  const mappedX = ((videoWidth - x) / videoWidth) * screenWidth;
-  const mappedY = (y / videoHeight) * screenHeight;
+  //* Padding de 10% em todos os lados
+  const paddingX = videoWidth * 0.1;
+  const paddingY = videoHeight * 0.1;
+  const usableWidth = videoWidth - 2 * paddingX;
+  const usableHeight = videoHeight - 2 * paddingY;
+
+  //* Garante que x e y estão dentro da área útil
+  const clampedX = Math.max(paddingX, Math.min(videoWidth - paddingX, x));
+  const clampedY = Math.max(paddingY, Math.min(videoHeight - paddingY, y));
+
+  //* Mapeia as coordenadas da área útil do vídeo para a janela
+  const mappedX = screenWidth - (((clampedX - paddingX) / usableWidth) * screenWidth);
+  const mappedY = ((clampedY - paddingY) / usableHeight) * screenHeight;
 
   cursor.style.left = `${mappedX}px`;
   cursor.style.top = `${mappedY}px`;
@@ -290,6 +324,33 @@ function simulateRightClick(x, y) {
   if (el) {
     el.dispatchEvent(new MouseEvent('contextmenu', { bubbles: true, clientX: x, clientY: y, button: 2 }));
   }
+}
+
+//* Função para mostrar/ocultar overlay no vídeo
+function showVideoOverlay(show, mensagem = 'Ajuste a posição para ficar visível!') {
+  let overlay = document.getElementById('video-position-overlay');
+  if (!overlay) {
+    overlay = document.createElement('div');  
+    overlay.id = 'video-position-overlay';
+    overlay.style.position = 'fixed';
+    overlay.style.top = video.style.top || '10px';
+    overlay.style.left = video.style.left || '10px';
+    overlay.style.width = video.width + 'px';
+    overlay.style.height = video.height + 'px';
+    overlay.style.background = 'rgba(38, 38, 38, 0.5)';
+    overlay.style.color = '#fff';
+    overlay.style.display = 'flex';
+    overlay.style.alignItems = 'center';
+    overlay.style.justifyContent = 'center';
+    overlay.style.fontSize = '1.5rem';
+    overlay.style.fontWeight = 'bold';
+    overlay.style.zIndex = 100002;
+    overlay.style.pointerEvents = 'none';
+    overlay.textContent = mensagem;
+    document.body.appendChild(overlay);
+  }
+  overlay.textContent = mensagem;
+  overlay.style.display = show ? 'flex' : 'none';
 }
 
 //* Escuta mensagens do background para iniciar/parar a detecção de gestos
